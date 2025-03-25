@@ -45,10 +45,10 @@ async def search_music(user_id: int, query: str, low_line: int = 0, high_line: i
 async def fetch_url(url: str) -> str:
     """Загружает HTML страницы по URL."""
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Referer": "https://web.ligaudio.ru/",
-        "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
-    }
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Referer": "https://web.ligaudio.ru/",
+    "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+}
     response = await http_cl.get(url, headers=headers)
     response.raise_for_status()
 
