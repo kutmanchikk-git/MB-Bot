@@ -1,0 +1,29 @@
+name: Run Telegram Bot
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 * * * *"  # Запуск раз в час, можно изменить
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest  # Платформа для выполнения
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Получение кода из репозитория
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'  # Версия Python
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt  # Установка зависимостей
+
+      - name: Run bot
+        env:
+          TOKEN: ${{ secrets.TOKEN }}  # Токен бота из секретов GitHub
+        run: python run.py  # Запуск твоего бота
